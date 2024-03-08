@@ -136,10 +136,13 @@ class OrderResource extends Resource
                             ->collapsed()
                             ->minItems(1)
                             ->live(debounce : 500)
+                            ->reorderable(true)
+                            ->reorderableWithButtons()
                             ->afterStateUpdated(function (Get $get, Set $set) {
                                 self::updateTotals($get, $set);
                             })
-                            ->itemLabel(fn (array $state): ?string => $state['product.name'] ?? null)
+//                            ->itemLabel(fn (array $state): ?string =>
+//                                self::labelProduct(self::getProduct($state['product_id'])) ?? null)
                             ->addActionLabel(__("Add products"))
                     ])->columns(1),
 
@@ -178,11 +181,8 @@ class OrderResource extends Resource
                     ->label(__("Payment"))
                     ->money("USD")
                     ->sortable(),
-                Tables\Columns\TextColumn::make('status.name')
-                    ->badge()
-                    ->color(fn (string $state): string => match($state){
-                        "Pending" => "warning"
-                    })
+                Tables\Columns\SelectColumn::make('status.name')
+                    ->inverseRelationship(name:'orderStatus')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('user_id')
                     ->numeric()
@@ -334,5 +334,9 @@ class OrderResource extends Resource
     public static function labelProduct(Model $record){
         $price = number_format($record->price, 2, '.', '');
         return "{$record->name} (\${$price})";
+    }
+
+    public static function getProduct($id){
+       return Product::all()->where("id", $id)->first();
     }
 }

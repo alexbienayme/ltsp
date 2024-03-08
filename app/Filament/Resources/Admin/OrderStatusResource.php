@@ -47,12 +47,16 @@ class OrderStatusResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->label(__("name"))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('action')
+                    ->label(__("action"))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('icon')
+                    ->label(__("icon"))
                     ->searchable(),
-                Tables\Columns\TextColumn::make('color')
+                Tables\Columns\ColorColumn::make("color")
+                    ->label(__("color"))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
