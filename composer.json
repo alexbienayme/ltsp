@@ -16,6 +16,7 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
+        "laravel/ui": "^4.5",
         "pelmered/filament-money-field": "^1.0",
         "thiktak/filament-nested-builder-form": "^1.0"
     },
