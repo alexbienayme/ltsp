@@ -1,30 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { BrowserRouter, createBrowserRouter, createRoutesFromElements, Route, RouterProvider, Routes } from 'react-router-dom';
+import Layout from './Layout/Layout';
+import Home from './screen/Home/Home';
+
+const router = createBrowserRouter(
+    createRoutesFromElements(
+        <Route>
+            <Route path='/' element={ <Layout /> }>
+              <Route index element={ <Home/> }></Route>
+            </Route>
+        </Route>
+    )
+)
 
 function App() {
-    return (
-        <div className="container">
-            <div className="row justify-content-center">
-                <div className="col-md-8">
-                    <div className="card">
-                        <div className="card-header">Example Component</div>
+    React.useEffect(() => {
+        AOS.init({
+            offset: 100,
+            duration: 800,
+            easing: "ease-in-out",
+            delay:0
+        })
+    }, []);
 
-                        <div className="card-body">I'm an example component!</div>
-                    </div>
-                </div>
-            </div>
+    return (
+        <div >
+            <RouterProvider router={ router } />
         </div>
     );
 }
 
+
 export default App;
 
-if (document.getElementById('app')) {
-    const Index = ReactDOM.createRoot(document.getElementById("app"));
-
-    Index.render(
-        <React.StrictMode>
-            <App/>
-        </React.StrictMode>
-    )
-}

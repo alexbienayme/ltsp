@@ -46,6 +46,7 @@ class ProductResource extends Resource
                             SpatieMediaLibraryFileUpload::make('product_image')
                                 ->multiple()
                                 ->reorderable()
+                                ->imageEditor()
                                 ->responsiveImages()
                                 ->optimize('webp')
                                 ->columnSpan('full'),
