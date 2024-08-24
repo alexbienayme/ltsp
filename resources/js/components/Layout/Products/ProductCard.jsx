@@ -81,8 +81,8 @@ const ProductCard = ({ product }) =>{
                 <b className="align-middle">...</b>
             </CustomSocialButton>
             </div>
-            <a className="relative  mt-3 flex  overflow-hidden  w-full" href="#">
-                <img className="object-cover transition-all duration-300 group-hover:scale-125" src={product.coverImage}  alt={product.name} />
+            <a className="relative  mt-3 flex  overflow-hidden w-full" href="#">
+                <img className="object-cover lg:h-[300px] sm:h-[250px] transition-all duration-300 group-hover:scale-125 w-full" src={product.coverImage}  alt={product.name} />
                 <span className="absolute top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-sm font-medium text-white">39% OFF</span>
                 <span onClick={handleWishList} className="absolute top-0 right-0 m-2 rounded-full px-2 text-center text-sm font-medium text-white">
                     <IoIosHeartEmpty className="text-2xl"/>

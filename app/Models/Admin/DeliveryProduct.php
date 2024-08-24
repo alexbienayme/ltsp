@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 class DeliveryProduct extends Pivot
 {
     use HasFactory;
-
+   
     public function delivery() : BelongsTo{
         return $this->belongsTo(Delivery::class);
     }

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->double("heigth")->nullable(true);
             $table->double("depth")->nullable(true);
             $table->double("weigth")->nullable(true);
-            $table->decimal("costs", 10, 7)->default(0);
+            $table->decimal("costs", 16, 5)->default(0);
             $table->string("delivery_mode")->nullable(true);
             $table->foreignId("address_id")->nullable(true)->constrained()->cascadeOnDelete();
             $table->timestamps();

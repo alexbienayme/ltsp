@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string("image")->nullable(true);
             $table->string("declination")->nullable(true);
             $table->string("reference")->nullable(true);
-            $table->decimal("price", 10, 7)->default(0);
+            $table->decimal("price", 16, 5)->default(0);
             $table->integer("quantity")->default(0);
             $table->timestamps();
         });

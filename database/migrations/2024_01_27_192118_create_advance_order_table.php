@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('advance_order', function (Blueprint $table) {
             $table->id();
-            $table->decimal("amount_order_advance", 15, 7);
+            $table->decimal("amount_order_advance", 16, 5);
             $table->foreignId("currency_id")->constrained();
             $table->timestamps();
         });

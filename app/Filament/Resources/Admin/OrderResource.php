@@ -258,8 +258,11 @@ class OrderResource extends Resource
                 ])->columns(2),
 
                SpatieMediaLibraryFileUpload::make('product_image')
+                   ->multiple()
+                   ->imageEditor()
                    ->responsiveImages()
                    ->optimize('webp')
+                   ->conversion('thumb')
                    ->columnSpan('full'),
 
                     Grid::make()

@@ -2,15 +2,17 @@
 
 namespace App\Models;
 
-use App\Models\Admin\AddressCustomer;
 use App\Models\Admin\Order;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Admin\Product;
+use App\Models\Admin\AddressCustomer;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Customer extends Model
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
 
     protected $fillable = [
         "firstname",
@@ -32,5 +34,21 @@ class Customer extends Model
 
     public function addressCustomers() : HasMany{
         return $this->hasMany(AddressCustomer::class);
+    }
+
+    public function subscribtions(){
+        //
+    }
+
+    public function likeProduct(){
+        return $this->belongsToMany(Product::class);
+    }
+
+    public function commentProduct(){
+        return $this->hasMany(Product::class);
+    }
+
+    public function shareProduct(){
+        return $this->belongsToMany(Product::class); 
     }
 }

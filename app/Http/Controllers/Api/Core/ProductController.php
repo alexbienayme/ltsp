@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Api\Core;
 
+use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use App\Models\Admin\Product;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Core\ProductResource;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Resources\Core\ProductResource;
 
 class ProductController extends Controller
 {
@@ -21,7 +22,7 @@ class ProductController extends Controller
                     "name" => $product->name,
                     "description" => $product->description,
                     "price" => $product->price,
-                    "coverImage" => $product->getFirstMedia() ? $product->getFirstMediaUrl() : null,
+                    "coverImage" => $product->getFirstMedia() ? $product->getFirstMedia()->getUrl("thumb") : null,
                     'images' => $product->getMedia()->map(function($media){
                         // return $media->id."/".$media->file_name;
                         return $this->getRelativePath($media->getUrl());

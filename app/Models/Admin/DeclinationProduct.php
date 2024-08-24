@@ -2,9 +2,11 @@
 
 namespace App\Models\Admin;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Models\Admin\Attribute;
+use App\Models\Admin\AttributeDeclination;
 use Illuminate\Database\Eloquent\Relations\Pivot;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class DeclinationProduct extends Pivot
 {
@@ -16,5 +18,13 @@ class DeclinationProduct extends Pivot
 
     public function product() : BelongsTo{
         return $this->belongsTo(Product::class);
+    }
+
+    public function attributeDeclination() : BelongsTo{
+        return $this->belongsTo(AttributeDeclination::class);
+    }
+
+    public function attribute() : BelongsTo{
+        return $this->belongsTo(Attribute::class);
     }
 }
